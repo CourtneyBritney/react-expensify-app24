@@ -1,40 +1,47 @@
 import * as firebase from 'firebase';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBap8AJklJ8tj_qS8bSebgu0aNBXA2mMUY",
-    authDomain: "expensify-f3539.firebaseapp.com",
-    databaseURL: "https://expensify-f3539.firebaseio.com",
-    projectId: "expensify-f3539",
-    storageBucket: "expensify-f3539.appspot.com",
-    messagingSenderId: "281051521931",
-    appId: "1:281051521931:web:5c41e25706b3e779e2058e",
-    measurementId: "G-5GMK8MPJWJ"
-  };
+const config = {
+  apiKey: "AIzaSyAapA5P8gWC83aHK26xgDDMzIBC4dw914w",
+  authDomain: "expensify-a13e6.firebaseapp.com",
+  databaseURL: "https://expensify-a13e6.firebaseio.com",
+  projectId: "expensify-a13e6",
+  storageBucket: "expensify-a13e6.appspot.com",
+  messagingSenderId: "124728096317"
+};
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 const database = firebase.database();
 
- database.ref().set({
-     name: 'Courtney Alexander',
-     age: 18,
-     isSingle: true,
-     location: {
-         city: 'Soweto',
-         country: 'South Africa'
-     }
- }).then(() => {
-     console.log('Data is saved');
- }).catch((e) => {
-     console.log('This failed.', e);
- });
+database.ref().set({
+  name: 'Courtney Alexander',
+  age: 18,
+  stressLevel: 6,
+  job: {
+    title: 'Software developer',
+    company: 'Google'
+  },
+  location: {
+    city: 'Johanesburg',
+    country: 'South Africa'
+  }
+}).then(() => {
+  console.log('Data is saved!');
+}).catch((e) => {
+  console.log('This failed.', e);
+});
 
+database.ref().update({
+  stressLevel: 9,
+  'job/company': 'Amazon',
+  'location/city': 'Seattle'
+});
 
 // database.ref()
 //   .remove()
 //   .then(() => {
-//       console.log('Data was removed');
+//     console.log('Data was removed');
 //   }).catch((e) => {
-//       console.log('Did not remove data', e);
+//     console.log('Did not remove data', e);
 //   });
 
