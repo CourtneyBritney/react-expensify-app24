@@ -129,7 +129,3 @@ export { firebase, database as default };
 // //   }).catch((e) => {
 // //     console.log('Did not remove data', e);
 // //   });
-
-
-
-
